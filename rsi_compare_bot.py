@@ -82,15 +82,12 @@ def prepare_data():
             logging.error("Failed to fetch necessary data.")
             return None
         
-        # Ensure both dataframes have the same index
         idx = df_sym.index.intersection(df_btc.index)
         df_sym, df_btc = df_sym.loc[idx], df_btc.loc[idx]
         
-        # Calculate average price for each asset
         avg_sym = df_sym[['Open', 'High', 'Low', 'Close']].mean(axis=1)
         avg_btc = df_btc[['Open', 'High', 'Low', 'Close']].mean(axis=1)
         
-        # Create final dataframe with ratio and RSI
         df = df_sym.copy()
         df['rel'] = avg_sym / avg_btc
         df['rsi'] = ta.rsi(df['rel'], length=RSI_LEN)
