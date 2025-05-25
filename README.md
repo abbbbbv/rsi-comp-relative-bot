@@ -18,3 +18,6 @@ A simple Binance Futures trading bot that uses **RSI signals on the relative pri
 1. Install dependencies:
    ```bash
    pip install binance-futures-connector pandas pandas-ta numpy
+
+
+abhinav00345@gmail.com
